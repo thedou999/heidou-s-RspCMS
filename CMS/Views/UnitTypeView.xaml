@@ -1,0 +1,111 @@
+﻿<UserControl x:Class="CMS.Views.UnitTypeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:local="clr-namespace:CMS.Views"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             d:DesignHeight="450" d:DesignWidth="800"
+             DataContext="{Binding Source={StaticResource Locator}, Path=UnitType}"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="FontSize" Value="26" />
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Foreground" Value="Gray" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="FontSize" Value="24" />
+                    <Setter Property="Foreground" Value="White" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="TextBlockStyleInline" TargetType="TextBlock">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="FontSize" Value="26" />
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="Foreground" Value="Gray" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="FontSize" Value="24" />
+                    <Setter Property="Foreground" Value="Black" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Border BorderBrush="#383839" BorderThickness="0,0,0,1">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                       FontSize="24" Foreground="White"
+                       Text="单位类型定义" />
+        </Border>
+        <TextBlock Margin="0,0,25,0" HorizontalAlignment="Right"
+                   VerticalAlignment="Center" Background="Transparent"
+                   FontFamily="{DynamicResource FontAwesome}"
+                   Style="{DynamicResource TextBlockStyle}"
+                   Text="&#xf055;">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseUp">
+                    <i:InvokeCommandAction Command="{Binding OpenAddUnitTypeWindow}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBlock>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="100" />
+            </Grid.RowDefinitions>
+
+            <DataGrid AutoGenerateColumns="False" CanUserAddRows="False"
+                      ItemsSource="{Binding UnitTypes}"
+                      MinRowHeight="30">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Id}" Header="编号" />
+                    <DataGridTextColumn Binding="{Binding Name}" Header="单位名称" />
+                    <DataGridTextColumn Binding="{Binding Tag}" Header="备注" />
+                    <DataGridTextColumn Binding="{Binding InsertDate}" Header="插入日期" />
+                    <DataGridTextColumn Binding="{Binding MemberName}" Header="登录员" />
+                    <DataGridTemplateColumn Header="操作">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Margin="0,0,10,0" HorizontalAlignment="Right"
+                                           VerticalAlignment="Center" Background="Transparent"
+                                           FontFamily="{DynamicResource FontAwesome}"
+                                           Style="{DynamicResource TextBlockStyleInline}"
+                                           Text="&#xf00d;">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseUp">
+                                            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:UnitTypeView}, Path=DataContext.DeleteUnitTypesCommand}" CommandParameter="{Binding}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+
+            <StackPanel Grid.Row="1" Margin="5"
+                        Orientation="Horizontal">
+                <TextBlock FontSize="18" Foreground="White"
+                           Text="统计：" />
+                <TextBlock FontSize="18" Foreground="White"
+                           Text="{Binding UnitTypes.Count}" />
+            </StackPanel>
+        </Grid>
+
+
+
+    </Grid>
+</UserControl>

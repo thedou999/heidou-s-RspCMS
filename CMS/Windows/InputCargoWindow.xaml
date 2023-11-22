@@ -1,0 +1,67 @@
+﻿<mah:MetroWindow x:Class="CMS.Windows.InputCargoWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:local="clr-namespace:CMS.Windows"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 Title="InputCargoWindow" Width="800"
+                 Height="450"
+                 DataContext="{Binding Source={StaticResource Locator}, Path=InputOrOutputCargo}"
+                 WindowStartupLocation="CenterScreen" mc:Ignorable="d">
+
+    <Grid Margin="100,50">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" HorizontalAlignment="Center"
+                   VerticalAlignment="Center" FontSize="36"
+                   Text="物资入库" />
+        <StackPanel Grid.Row="1" Margin="10,0,0,0"
+                    VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBlock Width="80" Margin="50,0,0,0"
+                       FontSize="18" Text="物资名称" />
+            <TextBlock Width="200" Margin="10,0,0,0"
+                       IsEnabled="False"
+                       Text="{Binding Cargo.Name}" />
+        </StackPanel>
+        <StackPanel Grid.Row="2" Margin="10,0,0,0"
+                    VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBlock Width="80" Margin="50,0,0,0"
+                       FontSize="18" Text="数量" />
+            <TextBox Width="200" Margin="10,0,0,0"
+                     Text="{Binding Record.Number, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Width="auto" Margin="10,0,0,0"
+                       VerticalAlignment="Center" Text="当前库存数量为" />
+            <TextBlock Width="auto" Margin="2,0,0,0"
+                       VerticalAlignment="Center"
+                       Text="{Binding Cargo.Number}" />
+        </StackPanel>
+        <StackPanel Grid.Row="3" Margin="10,0,0,0"
+                    VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBlock Width="80" Margin="50,0,0,0"
+                       FontSize="18" Text="备注" />
+            <TextBox Width="200" Margin="10,0,0,0"
+                     Text="{Binding Record.Tag, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+        <StackPanel Grid.Row="4" Margin="80,0,0,0"
+                    VerticalAlignment="Center" Orientation="Horizontal">
+            <Button Width="80"
+                    Command="{Binding InputCargoCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=mah:MetroWindow}}"
+                    Content="操作" />
+            <Button Width="80" Margin="80,0,0,0"
+                    Command="{Binding CloseCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=mah:MetroWindow}}"
+                    Content="取消" />
+        </StackPanel>
+
+
+
+    </Grid>
+</mah:MetroWindow>

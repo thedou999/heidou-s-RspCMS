@@ -1,0 +1,14 @@
+D:\ProgramingFile\c#\visual studio\WPF\CMS\Models\bin\Debug\Models.dll.config
+D:\ProgramingFile\c#\visual studio\WPF\CMS\Models\bin\Debug\Models.dll
+D:\ProgramingFile\c#\visual studio\WPF\CMS\Models\bin\Debug\Models.pdb
+D:\ProgramingFile\c#\visual studio\WPF\CMS\Models\bin\Debug\EntityFramework.dll
+D:\ProgramingFile\c#\visual studio\WPF\CMS\Models\bin\Debug\EntityFramework.SqlServer.dll
+D:\ProgramingFile\c#\visual studio\WPF\CMS\Models\bin\Debug\EntityFramework.xml
+D:\ProgramingFile\c#\visual studio\WPF\CMS\Models\bin\Debug\EntityFramework.SqlServer.xml
+D:\ProgramingFile\c#\visual studio\WPF\CMS\Models\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\ProgramingFile\c#\visual studio\WPF\CMS\Models\obj\Debug\Models.csproj.AssemblyReference.cache
+D:\ProgramingFile\c#\visual studio\WPF\CMS\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
+D:\ProgramingFile\c#\visual studio\WPF\CMS\Models\obj\Debug\Models.csproj.CopyComplete
+D:\ProgramingFile\c#\visual studio\WPF\CMS\Models\obj\Debug\Models.dll
+D:\ProgramingFile\c#\visual studio\WPF\CMS\Models\obj\Debug\Models.pdb
+D:\ProgramingFile\c#\visual studio\WPF\CMS\Models\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll

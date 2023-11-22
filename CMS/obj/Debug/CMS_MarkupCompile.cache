@@ -1,0 +1,20 @@
+﻿CMS
+
+
+winexe
+C#
+.cs
+D:\ProgramingFile\c#\visual studio\WPF\CMS\CMS\obj\Debug\
+CMS
+none
+false
+DEBUG;TRACE
+D:\ProgramingFile\c#\visual studio\WPF\CMS\CMS\App.xaml
+181694968509
+235804365
+51530193910
+1311152219002
+MainWindow.xaml;Resources\DataGridCargoTypeViewStyleDictionary.xaml;Resources\ListBoxStyleManuDictionary.xaml;Resources\RadioButtonStyleManuDictionary.xaml;Resources\ToggleButtonStyleManuDictionary.xaml;Views\CargoTypeView.xaml;Views\CargoView.xaml;Views\IndexView.xaml;Views\MemberView.xaml;Views\RecordView.xaml;Views\UnitTypeView.xaml;Windows\AddCargoTypeWindow.xaml;Windows\AddCargoWindow.xaml;Windows\AddMemberWindow.xaml;Windows\AddUnitTypeWindow.xaml;Windows\InputCargoWindow.xaml;Windows\LoginWindow.xaml;Windows\OutputCargoWindow.xaml;
+
+False
+

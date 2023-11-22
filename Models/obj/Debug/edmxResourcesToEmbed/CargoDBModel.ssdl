@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CargoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cargo">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="TypeId" Type="int" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar" MaxLength="64" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Tag" Type="nvarchar" MaxLength="256" />
+    <Property Name="InsertDate" Type="datetime" Nullable="false" />
+    <Property Name="MemberId" Type="int" Nullable="false" />
+    <Property Name="MemberName" Type="nvarchar" MaxLength="64" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“CargoDB.dbo.CargoType”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="CargoType">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="InsertDate" />
+      <PropertyRef Name="MemberId" />
+      <PropertyRef Name="MemberName" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Tag" Type="nvarchar" MaxLength="50" />
+    <Property Name="InsertDate" Type="datetime" Nullable="false" />
+    <Property Name="MemberId" Type="int" Nullable="false" />
+    <Property Name="MemberName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Role" Type="int" Nullable="false" />
+    <Property Name="InsertDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“CargoDB.dbo.Record”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="Record">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CargoId" />
+      <PropertyRef Name="Number" />
+      <PropertyRef Name="InsertDate" />
+      <PropertyRef Name="MemberId" />
+      <PropertyRef Name="MemberName" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CargoId" Type="int" Nullable="false" />
+    <Property Name="CargoName" Type="nvarchar" MaxLength="64" />
+    <Property Name="Number" Type="float" Nullable="false" />
+    <Property Name="Tag" Type="nvarchar" MaxLength="256" />
+    <Property Name="InsertDate" Type="datetime" Nullable="false" />
+    <Property Name="MemberId" Type="int" Nullable="false" />
+    <Property Name="MemberName" Type="nvarchar" MaxLength="64" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="CargoDBModelStoreContainer">
+    <EntitySet Name="Cargo" EntityType="Self.Cargo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CargoType" EntityType="Self.CargoType" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CargoType].[Id] AS [Id], 
+    [CargoType].[Name] AS [Name], 
+    [CargoType].[Tag] AS [Tag], 
+    [CargoType].[InsertDate] AS [InsertDate], 
+    [CargoType].[MemberId] AS [MemberId], 
+    [CargoType].[MemberName] AS [MemberName]
+    FROM [dbo].[CargoType] AS [CargoType]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Record" EntityType="Self.Record" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Record].[Id] AS [Id], 
+    [Record].[CargoId] AS [CargoId], 
+    [Record].[CargoName] AS [CargoName], 
+    [Record].[Number] AS [Number], 
+    [Record].[Tag] AS [Tag], 
+    [Record].[InsertDate] AS [InsertDate], 
+    [Record].[MemberId] AS [MemberId], 
+    [Record].[MemberName] AS [MemberName]
+    FROM [dbo].[Record] AS [Record]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
